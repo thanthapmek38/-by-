@@ -114,9 +114,19 @@ async function handleEvent(event) {
   const userId = event.source.userId;
   const groupId = event.source.groupId;
 
-  // LOG groupId เพื่อนำไปใส่ใน Variables
+  // ส่ง Group ID มาหาคนที่พิมพ์ทาง DM
   if (event.source.type === 'group') {
     console.log(`==== GROUP ID: ${groupId} ====`);
+    try {
+      await client.pushMessage(userId, {
+        type: 'text',
+        text: `🔔 Group ID ของกลุ่มนี้คือ:
+
+${groupId}
+
+นำไปใส่ใน LINE_ADMIN_GROUP_ID ใน Railway ได้เลยครับ`,
+      });
+    } catch (_) {}
   }
 
   // ════════════════════════════════════════════════════
