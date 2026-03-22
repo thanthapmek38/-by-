@@ -114,6 +114,11 @@ async function handleEvent(event) {
   const userId = event.source.userId;
   const groupId = event.source.groupId;
 
+  // LOG groupId เพื่อนำไปใส่ใน Variables
+  if (event.source.type === 'group') {
+    console.log(`==== GROUP ID: ${groupId} ====`);
+  }
+
   // ════════════════════════════════════════════════════
   //  กลุ่มแอดมิน: รับ / ยกเลิก ออเดอร์
   // ════════════════════════════════════════════════════
